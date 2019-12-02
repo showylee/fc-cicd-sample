@@ -1,0 +1,18 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resource:
+  AnalysisBaseFunctionCompute:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: 'CICDSample'
+      LogConfig:
+        Project: cicd-sample
+        Logstore: cicd-logstore
+      realtimeImei:
+        Type: 'Aliyun::Serverless::Function'
+        Properties:
+          Handler: hello.handler
+          CodeUri: './'
+          Description: 'return string "hello,world!"'
+          Runtime: nodejs10
+          Timeout: 60

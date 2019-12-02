@@ -1,0 +1,15 @@
+{
+  "name": "fc-cicd-sample",
+  "version": "1.0.0",
+  "description": "sample functioncompute",
+  "main": "hello.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "show",
+  "license": "ISC",
+  "dependencies": {
+    "expect": "^24.9.0",
+    "mocha": "^6.2.2"
+  }
+}
