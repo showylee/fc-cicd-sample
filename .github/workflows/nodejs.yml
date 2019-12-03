@@ -27,4 +27,4 @@ jobs:
        npm install @alicloud/fun -g
     - name: config
       run: |
-        fun 
+        fun deploy
