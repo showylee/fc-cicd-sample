@@ -8,11 +8,11 @@ Resources:
       LogConfig:
         Project: cicd-sample-project
         Logstore: cicd-sample-logstore
-      CICDSample:
-        Type: 'Aliyun::Serverless::Function'
-        Properties:
-          Handler: hello.handler
-          CodeUri: './'
-          Description: 'return string "hello,world!"'
-          Runtime: nodejs10
-          Timeout: 60
+    CICDSample:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: hello.handler
+        CodeUri: './'
+        Description: 'return string "hello,world!"'
+        Runtime: nodejs10
+        Timeout: 60
