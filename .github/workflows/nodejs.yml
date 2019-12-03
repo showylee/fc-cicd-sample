@@ -27,13 +27,12 @@ jobs:
         npm install @alicloud/fun -g
     - name: fun config echo yaml
       run: |
-        echo endpoint: 'https://5463858419226215.ap-northeast-1.fc.aliyuncs.com' > ~/.fcli/config.yaml
-        echo api_version: '2016-08-15' >> ~/.fcli/config.yaml
-        echo access_key_id: LTAI4Ftiwv1igVS2Whng3bfA >> ~/.fcli/config.yaml
-        echo access_key_secret: ${{ secrets.ALICLOUD_TOKEN }} >> ~/.fcli/config.yaml
-        echo security_token: '' >> ~/.fcli/config.yaml
-        echo timeout: 60 >> ~/.fcli/config.yaml
-        echo sls_endpoint: ap-northeast-1.log.aliyuncs.com >> ~/.fcli/config.yaml
+        echo ACCOUNT_ID=5463858419226215 > .env
+        echo REGION=ap-northeast-1 >> .env
+        echo ACCESS_KEY_ID=LTAI4Ftiwv1igVS2Whng3bfA >> .env
+        echo ACCESS_KEY_SECRET=${{ secrets.ALICLOUD_TOKEN }} >> .env
+        echo TIMEOUT=60 >> .env
+        echo RETRIES=3 >> .env
     - name: function deploy
       run: |
         fun deploy
