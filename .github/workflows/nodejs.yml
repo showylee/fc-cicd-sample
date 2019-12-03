@@ -1,0 +1,38 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm run build --if-present
+        npm test
+    - name: install funcraft
+      run: |
+        npm install @alicloud/fun -g
+    - name: fun config echo yaml
+      run: |
+        echo ACCOUNT_ID=5463858419226215 > .env
+        echo REGION=ap-northeast-1 >> .env
+        echo ACCESS_KEY_ID=LTAI4Ftiwv1igVS2Whng3bfA >> .env
+        echo ACCESS_KEY_SECRET=${{ secrets.ALICLOUD_TOKEN }} >> .env
+        echo TIMEOUT=60 >> .env
+        echo RETRIES=3 >> .env
+    - name: function deploy
+      run: |
+        fun deploy
