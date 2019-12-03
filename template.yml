@@ -1,14 +1,14 @@
 ROSTemplateFormatVersion: '2015-09-01'
 Transform: 'Aliyun::Serverless-2018-04-03'
-Resource:
+Resources:
   AnalysisBaseFunctionCompute:
     Type: 'Aliyun::Serverless::Service'
     Properties:
       Description: 'CICDSample'
       LogConfig:
-        Project: cicd-sample
-        Logstore: cicd-logstore
-      realtimeImei:
+        Project: cicd-sample-project
+        Logstore: cicd-sample-logstore
+      CICDSample:
         Type: 'Aliyun::Serverless::Function'
         Properties:
           Handler: hello.handler
