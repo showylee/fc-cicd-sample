@@ -25,7 +25,7 @@ jobs:
     - name: install funcraft
       run: |
         npm install @alicloud/fun -g
-    - name: fun config echo yaml
+    - name: fun config echo to .env
       run: |
         echo ACCOUNT_ID=5463858419226215 > .env
         echo REGION=ap-northeast-1 >> .env
@@ -33,6 +33,6 @@ jobs:
         echo ACCESS_KEY_SECRET=${{ secrets.ALICLOUD_TOKEN }} >> .env
         echo TIMEOUT=60 >> .env
         echo RETRIES=3 >> .env
-    - name: function deploy
+    - name: deploy to AlibabaCloud FunctionCompute
       run: |
         fun deploy
