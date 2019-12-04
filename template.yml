@@ -11,9 +11,17 @@ Resources:
         Description: 'return string "hello,world!"'
         Runtime: nodejs10
         Timeout: 60
-      Events:
-        http-trigger:
-          Type: HTTP
-          Properties:
-            AuthType: ANONYMOUS
-            Methods: ['GET']
+  CICDSampleAPIGateway:
+    Type: 'Aliyun::Serverless::Api'
+    Properties:
+            StageName: TEST,RELEASE
+      DefinitionBody:
+        '/hello':
+          get:
+            x-aliyun-apigateway-api-name: sampleCICD
+            x-aliyun-apigateway-fc:
+              arn: acs::fc::service/${CICDSampleFunctionCompute.Arn}/functions/${CICDSample.Arn}/
+              timeout: 10000
+            x-aliyun-apigateway-request-config:
+              requestMode: 'Mapping'
+              requestProtocol: 'http'

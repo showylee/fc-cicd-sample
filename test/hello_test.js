@@ -2,7 +2,7 @@ const expect = require('expect')
 const main = require('../hello.js')
 
 const hoge = (sys, res)=> {
-  result = res
+  result = res.body
 }
 
 let result = ""
