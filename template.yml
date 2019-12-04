@@ -14,7 +14,7 @@ Resources:
   CICDSampleAPIGateway:
     Type: 'Aliyun::Serverless::Api'
     Properties:
-            StageName: TEST,RELEASE
+      StageName: TEST,RELEASE
       DefinitionBody:
         '/hello':
           get:
